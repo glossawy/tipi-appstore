@@ -54,7 +54,7 @@
     {
       "name": "core",
       "isMain": true,
-      "image": "ghcr.io/moghtech/komodo-core:${COMPOSE_KOMODO_VERSION}",
+      "image": "ghcr.io/moghtech/komodo-core:1.19.5",
       "extraLabels": {
         "komodo.skip": ""
       },
@@ -80,7 +80,7 @@
     },
     {
       "name": "periphery",
-      "image": "ghcr.io/moghtech/komodo-periphery:${COMPOSE_KOMODO_VERSION}",
+      "image": "ghcr.io/moghtech/komodo-periphery:1.19.5",
       "extraLabels": {
         "komodo.skip": ""
       },
