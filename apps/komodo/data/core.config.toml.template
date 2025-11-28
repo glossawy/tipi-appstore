@@ -327,7 +327,7 @@ ssl_cert_file = "/config/ssl/cert.pem"
 
 # Construct the address as mongodb://{username}:{password}@{address}
 ## Env: KOMODO_DATABASE_ADDRESS
-database.address = "ferretdb:271017"
+database.address = "ferretdb:27017"
 ## Env: KOMODO_DATABASE_USERNAME or KOMODO_DATABASE_USERNAME_FILE
 database.username = "admin"
 ## Env: KOMODO_DATABASE_PASSWORD or KOMODO_DATABASE_PASSWORD_FILE
