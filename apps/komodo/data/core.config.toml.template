@@ -329,9 +329,9 @@ ssl_cert_file = "/config/ssl/cert.pem"
 ## Env: KOMODO_DATABASE_ADDRESS
 database.address = "ferretdb:271017"
 ## Env: KOMODO_DATABASE_USERNAME or KOMODO_DATABASE_USERNAME_FILE
-database.username = "{{KOMODO_DATABASE_USERNAME}}"
+database.username = "admin"
 ## Env: KOMODO_DATABASE_PASSWORD or KOMODO_DATABASE_PASSWORD_FILE
-database.password = "{{KOMODO_DATABASE_PASSWORD}}"
+database.password = "{{APP_KOMODO_DB_PASSWORD}}"
 
 ## ==== other ====
 
