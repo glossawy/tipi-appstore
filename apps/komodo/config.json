@@ -1,0 +1,77 @@
+{
+  "$schema": "https://schemas.runtipi.io/app-info.json",
+  "name": "Komodo",
+  "id": "komodo",
+  "short_desc": "",
+  "author": "glossawy",
+  "dynamic_config": true,
+  "categories": ["utilities", "development"],
+  "port": 9210,
+  "description": "",
+  "tipi_version": 1,
+  "version": "1.19.5",
+  "source": "https://github.com/moghtech/komodo",
+  "website": "https://komo.do",
+  "exposable": true,
+  "force_expose": true,
+  "https": true,
+  "min_tipi_version": "4.5.0",
+  "created_at": 1763975691,
+  "updated_at": 1763975691,
+  "form_fields": [
+    {
+      "type": "text",
+      "label": "Admin Username",
+      "required": true,
+      "min": 3,
+      "regex": "[a-zA-Z0-9-_]+",
+      "default": "admin",
+      "hint": "Created on initialization",
+      "env_variable": "APP_KOMODO_ADMIN_USERNAME"
+    },
+    {
+      "type": "password",
+      "label": "Admin Password",
+      "required": true,
+      "min": 8,
+      "max": 128,
+      "hint": "Created on initialization",
+      "env_variable": "APP_KOMODO_ADMIN_PASSWORD"
+    },
+    {
+      "type": "text",
+      "label": "Allow user registration",
+      "default": "true",
+      "options": [
+        { "label": "Allow", "value": "false" },
+        { "label": "Disallow", "value": "true" }
+      ],
+      "hint": "Enable or disable new user signups",
+      "env_variable": "APP_KOMODO_DISABLE_USER_REGISTRATION"
+    },
+    {
+      "type": "random",
+      "label": "Database Password",
+      "min": 32,
+      "env_variable": "APP_KOMODO_DB_PASSWORD"
+    },
+    {
+      "type": "random",
+      "label": "Komodo Passkey",
+      "min": 32,
+      "env_variable": "APP_KOMODO_PASSKEY"
+    },
+    {
+      "type": "random",
+      "label": "Komodo Webhook Secret",
+      "min": 32,
+      "env_variable": "APP_KOMODO_WEBHOOK_SECRET"
+    },
+    {
+      "type": "random",
+      "label": "Komodo JWT Secret",
+      "min": 32,
+      "env_variable": "APP_KOMODO_JWT_SECRET"
+    }
+  ]
+}

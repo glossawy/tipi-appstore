@@ -1,0 +1,110 @@
+{
+  "$schema": "https://schemas.runtipi.io/dynamic-compose.json",
+  "schemaVersion": 2,
+  "services": [
+    {
+      "name": "postgres",
+      "image": "ghcr.io/ferretdb/postgres-documentdb:15-0.107.0-ferretdb-2.7.0",
+      "extraLabels": {
+        "komodo.skip": ""
+      },
+      "volumes": [
+        {
+          "hostPath": "${APP_DATA_DIR}/pgdata",
+          "containerPath": "/var/lib/postgresql/data",
+          "private": true
+        }
+      ],
+      "environment": [
+        {
+          "key": "POSTGRES_USER",
+          "value": "admin"
+        },
+        {
+          "key": "POSTGRES_PASSWORD",
+          "value": "${APP_KOMODO_DB_PASSWORD}"
+        },
+        {
+          "key": "POSTGRES_DB",
+          "value": "komodo"
+        }
+      ]
+    },
+    {
+      "name": "ferretdb",
+      "image": "ghcr.io/ferretdb/ferretdb:2.7.0",
+      "dependsOn": ["postgres"],
+      "extraLabels": {
+        "komodo.skip": ""
+      },
+      "volumes": [
+        {
+          "hostPath": "${APP_DATA_DIR}/ferretdb-state",
+          "containerPath": "/state",
+          "private": true
+        }
+      ],
+      "environment": [
+        {
+          "key": "FERRETDB_POSTGRESQL_URL",
+          "value": "postgres://admin:${APP_KOMODO_DB_PASSWORD}@postgres:5432/postgres"
+        }
+      ]
+    },
+    {
+      "name": "core",
+      "isMain": true,
+      "image": "ghcr.io/moghtech/komodo-core:${COMPOSE_KOMODO_VERSION}",
+      "extraLabels": {
+        "komodo.skip": ""
+      },
+      "dependsOn": ["ferretdb"],
+      "internalPort": 9120,
+      "volumes": [
+        {
+          "hostPath": "${APP_DATA_DIR}/backups",
+          "containerPath": "/backups",
+          "private": true
+        },
+        {
+          "hostPath": "${APP_DATA_DIR}/syncs",
+          "containerPath": "/syncs",
+          "private": true
+        },
+        {
+          "hostPath": "${APP_DATA_DIR}/data/core.config.toml",
+          "containerPath": "/config/config.toml",
+          "readOnly": true
+        }
+      ]
+    },
+    {
+      "name": "periphery",
+      "image": "ghcr.io/moghtech/komodo-periphery:${COMPOSE_KOMODO_VERSION}",
+      "extraLabels": {
+        "komodo.skip": ""
+      },
+      "volumes": [
+        {
+          "hostPath": "/var/run/docker.sock",
+          "containerPath": "/var/run/docker.sock"
+        },
+        {
+          "hostPath": "/proc",
+          "containerPath": "/proc",
+          "readOnly": true
+        },
+        {
+          "hostPath": "/etc/komodo",
+          "containerPath": "/etc/komodo",
+          "shared": true
+        },
+        {
+          "hostPath": "${APP_DATA_DIR}/data/periphery.config.toml",
+          "containerPath": "/etc/komodo/periphery.config.toml",
+          "readOnly": true
+        }
+      ]
+    }
+  ]
+}
