@@ -49,7 +49,7 @@
       "environment": [
         {
           "key": "FERRETDB_POSTGRESQL_URL",
-          "value": "postgres://admin:${APP_KOMODO_DB_PASSWORD}@postgres:5432/postgres"
+          "value": "postgres://admin:${APP_KOMODO_DB_PASSWORD}@postgres:5432/komodo"
         }
       ]
     },
