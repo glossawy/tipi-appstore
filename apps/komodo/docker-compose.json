@@ -14,6 +14,10 @@
           "hostPath": "${APP_DATA_DIR}/pgdata",
           "containerPath": "/var/lib/postgresql/data",
           "private": true
+        },
+        {
+          "hostPath": "${APP_DATA_DIR}/500-create-table.sql",
+          "containerPath": "/docker-entrypoint-initdb.d/500-create-table.sql"
         }
       ],
       "environment": [
