@@ -4,6 +4,7 @@
   "id": "komodo",
   "short_desc": "",
   "author": "glossawy",
+  "available": true,
   "dynamic_config": true,
   "categories": ["utilities", "development"],
   "port": 9210,
