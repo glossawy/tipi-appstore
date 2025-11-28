@@ -4,6 +4,7 @@
   "services": [
     {
       "name": "postgres",
+      "user": "0:0",
       "image": "ghcr.io/ferretdb/postgres-documentdb:15-0.107.0-ferretdb-2.7.0",
       "extraLabels": {
         "komodo.skip": ""
@@ -34,6 +35,7 @@
       "name": "ferretdb",
       "image": "ghcr.io/ferretdb/ferretdb:2.7.0",
       "dependsOn": ["postgres"],
+      "user": "0:0",
       "extraLabels": {
         "komodo.skip": ""
       },
