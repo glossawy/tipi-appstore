@@ -23,13 +23,13 @@
 ## This will be the document title on the web page.
 ## Env: KOMODO_TITLE
 ## Default: 'Komodo'
-title = "$KOMODO_TITLE"
+title = "{{KOMODO_TITLE}}"
 
 ## This should be the url used to access Komodo in browser, potentially behind DNS.
 ## Eg https://komodo.example.com or http://12.34.56.78:9120. This should match the address configured in your Oauth app.
 ## Env: KOMODO_HOST
 ## Required, no default.
-host = "$APP_PROTOCOL://$APP_DOMAIN"
+host = "{{APP_PROTOCOL}}://{{APP_DOMAIN}}"
 
 ## The port the core system will run on.
 ## Env: KOMODO_PORT
@@ -47,18 +47,18 @@ bind_ip = "[::]"
 ## If the periphery servers don't have passkeys configured, this doesn't need to be changed.
 ## Env: KOMODO_PASSKEY or KOMODO_PASSKEY_FILE
 ## Required, no default
-passkey = "$APP_KOMODO_PASSKEY"
+passkey = "{{APP_KOMODO_PASSKEY}}"
 
 ## Ensure a server with this address exists on Core
 ## upon first startup. Example: `https://periphery:8120`
 ## Env: KOMODO_FIRST_SERVER
 ## Optional, no default.
-first_server = "$KOMODO_FIRST_SERVER"
+first_server = "{{KOMODO_FIRST_SERVER}}"
 
 ## Give the first server a custom name.
 ## Env: KOMODO_FIRST_SERVER_NAME
 ## Default: Local
-first_server_name = "$KOMODO_FIRST_SERVER_NAME"
+first_server_name = "{{KOMODO_FIRST_SERVER_NAME}}"
 
 ## Disables write support on resources in the UI.
 ## This protects users that that would normally have write priviledges during their UI usage,
@@ -71,7 +71,7 @@ ui_write_disabled = false
 ## Useful when only having http connection to core, as UI quick-copy button won't work.
 ## Env: KOMODO_DISABLE_CONFIRM_DIALOG
 ## Default: false
-disable_confirm_dialog = $KOMODO_DISABLE_CONFIRM_DIALOG
+disable_confirm_dialog = {{KOMODO_DISABLE_CONFIRM_DIALOG}}
 
 ## Disables UI websocket automatic reconnection.
 ## Users will still be able to trigger reconnect by clicking the connection indicator.
@@ -125,23 +125,23 @@ internet_interface = ""
 ##
 ## Env: KOMODO_LOCAL_AUTH
 ## Default: false
-local_auth = $KOMODO_LOCAL_AUTH
+local_auth = {{KOMODO_LOCAL_AUTH}}
 
 ## Initialize the first admin user when starting up Komodo for the first time.
 ## Env: KOMODO_INIT_ADMIN_USERNAME or KOMODO_INIT_ADMIN_USERNAME_FILE
 ## Default: None
-init_admin_username = "$APP_KOMODO_ADMIN_USERNAME"
+init_admin_username = "{{APP_KOMODO_ADMIN_USERNAME}}"
 
 ## Set password for first admin user
 ## Env: KOMODO_INIT_ADMIN_PASSWORD or KOMODO_INIT_ADMIN_PASSWORD_FILE
 ## Default: changeme
-init_admin_password = "$APP_KOMODO_ADMIN_PASSWORD"
+init_admin_password = "{{APP_KOMODO_ADMIN_PASSWORD}}"
 
 ## Normally new users will be registered, but not enabled until an Admin enables them.
 ## With `disable_user_registration = true`, only the first user to log in will registered as a user.
 ## Env: KOMODO_DISABLE_USER_REGISTRATION
 ## Default: false
-disable_user_registration = $APP_KOMODO_DISABLE_USER_REGISTRATION
+disable_user_registration = {{APP_KOMODO_DISABLE_USER_REGISTRATION}}
 
 ## New users will be automatically enabled when they sign up.
 ## Otherwise, new users will be disabled on first login.
@@ -176,14 +176,14 @@ lock_login_credentials_for = []
 ## This means users will have to log in again if Komodo restarts.
 ## Env: KOMODO_JWT_SECRET or KOMODO_JWT_SECRET_FILE
 ## Default: empty string, meaning a random secret will be generated at startup.
-jwt_secret = "$APP_KOMODO_JWT_SECRET"
+jwt_secret = "{{APP_KOMODO_JWT_SECRET}}"
 
 ## Specify how long a user can stay logged in before they have to log in again.
 ## All jwts are invalidated on application restart unless `jwt_secret` is set.
 ## Env: KOMODO_JWT_TTL
 ## Options: https://docs.rs/komodo_client/latest/komodo_client/entities/enum.Timelength.html
 ## Default: 1-day.
-jwt_ttl = "$KOMODO_JWT_TTL"
+jwt_ttl = "{{KOMODO_JWT_TTL}}"
 
 #############
 # OIDC Auth #
@@ -284,13 +284,13 @@ github_oauth.secret = ""
 ## Env: KOMODO_MONITORING_INTERVAL
 ## Options: https://docs.rs/komodo_client/latest/komodo_client/entities/enum.Timelength.html
 ## Default: 15-sec
-monitoring_interval = "$KOMODO_MONITORING_INTERVAL"
+monitoring_interval = "{{KOMODO_MONITORING_INTERVAL}}"
 
 ## Interval at which to poll Resources for any updates / automated actions.
 ## Env: KOMODO_RESOURCE_POLL_INTERVAL
 ## Options: https://docs.rs/komodo_client/latest/komodo_client/entities/enum.Timelength.html
 ## Default: 1-hr
-resource_poll_interval = "$KOMODO_RESOURCE_POLL_INTERVAL"
+resource_poll_interval = "{{KOMODO_RESOURCE_POLL_INTERVAL}}"
 
 ############
 # Security #
@@ -299,7 +299,7 @@ resource_poll_interval = "$KOMODO_RESOURCE_POLL_INTERVAL"
 ## Enable HTTPS server using the given key and cert.
 ## Env: KOMODO_SSL_ENABLED
 ## Default: false
-ssl_enabled = $APP_EXPOSED
+ssl_enabled = {{APP_EXPOSED}}
 
 ## Path to the ssl key.
 ## Env: KOMODO_SSL_KEY_FILE
@@ -329,9 +329,9 @@ ssl_cert_file = "/config/ssl/cert.pem"
 ## Env: KOMODO_DATABASE_ADDRESS
 database.address = "ferretdb:271017"
 ## Env: KOMODO_DATABASE_USERNAME or KOMODO_DATABASE_USERNAME_FILE
-database.username = "$KOMODO_DATABASE_USERNAME"
+database.username = "{{KOMODO_DATABASE_USERNAME}}"
 ## Env: KOMODO_DATABASE_PASSWORD or KOMODO_DATABASE_PASSWORD_FILE
-database.password = "$KOMODO_DATABASE_PASSWORD"
+database.password = "{{KOMODO_DATABASE_PASSWORD}}"
 
 ## ==== other ====
 
@@ -356,7 +356,7 @@ database.app_name = "komodo_core"
 ## If not provided,
 ## Env: KOMODO_WEBHOOK_SECRET or KOMODO_WEBHOOK_SECRET_FILE
 ## Optional, no default.
-webhook_secret = "$APP_KOMODO_WEBHOOK_SECRET"
+webhook_secret = "{{APP_KOMODO_WEBHOOK_SECRET}}"
 
 ## An alternate base url that is used to recieve git webhook requests.
 ## If empty or not specified, will use 'host' address as base.
@@ -393,13 +393,13 @@ webhook_base_url = ""
 ## Env: KOMODO_LOGGING_LEVEL
 ## Options: off, error, warn, info, debug, trace
 ## Default: info
-logging.level = "$KOMODO_LOGGING_LEVEL"
+logging.level = "{{KOMODO_LOGGING_LEVEL}}"
 
 ## Specify the logging format.
 ## Env: KOMODO_LOGGING_STDIO
 ## Options: standard, json, none
 ## Default: standard
-logging.stdio = "$KOMODO_LOGGING_STDIO"
+logging.stdio = "{{KOMODO_LOGGING_STDIO}}"
 
 ## Optionally specify a opentelemetry otlp endpoint to send traces to.
 ## Example: http://localhost:4317
@@ -416,13 +416,13 @@ logging.opentelemetry_service_name = "Komodo"
 ## Note. Single logs will span multiple lines.
 ## Env: KOMODO_LOGGING_PRETTY
 ## Default: false
-logging.pretty = $KOMODO_LOGGING_PRETTY
+logging.pretty = {{KOMODO_LOGGING_PRETTY}}
 
 ## Specify whether startup config log
 ## is more human readable (multi-line)
 ## Env: KOMODO_PRETTY_STARTUP_CONFIG
 ## Default: false
-pretty_startup_config = $KOMODO_PRETTY_STARTUP_CONFIG
+pretty_startup_config = {{KOMODO_PRETTY_STARTUP_CONFIG}}
 
 ###########
 # PRUNING #

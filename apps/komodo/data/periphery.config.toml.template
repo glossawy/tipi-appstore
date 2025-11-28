@@ -41,25 +41,25 @@ root_directory = "/etc/komodo"
 ## Optional. Override the directory periphery will use to manage repos.
 ## The periphery user must have write access to this directory.
 ## Env: PERIPHERY_REPO_DIR
-## Default: $root_directory/repos
+## Default: {{root_directory}}/repos
 # repo_dir = "/etc/komodo/repos"
 
 ## Optional. Override the directory periphery will use to manage stacks.
 ## The periphery user must have write access to this directory.
 ## Env: PERIPHERY_STACK_DIR
-## Default: $root_directory/stacks
+## Default: {{root_directory}}/stacks
 # stack_dir = "/etc/komodo/stacks"
 
 ## Optional. Override the directory periphery will use to manage builds.
 ## The periphery user must have write access to this directory.
 ## Env: PERIPHERY_BUILD_DIR
-## Default: $root_directory/builds
+## Default: {{root_directory}}/builds
 # build_dir = "/etc/komodo/builds"
 
 ## Disable the terminal APIs and disallow remote shell access through Periphery.
 ## Env: PERIPHERY_DISABLE_TERMINALS
 ## Default: false
-disable_terminals = $PERIPHERY_DISABLE_TERMINALS
+disable_terminals = {{PERIPHERY_DISABLE_TERMINALS}}
 
 ## Disable the container exec APIs and disallow remote container shell access through Periphery.
 ## This can be left enabled while general terminal access is disabled.
@@ -90,7 +90,7 @@ legacy_compose_cli = false
 ## Example: include_disk_mounts = ["/mnt/include/1", "/mnt/include/2"]
 ## Env: PERIPHERY_INCLUDE_DISK_MOUNTS
 ## Default: empty, which won't filter down the disks.
-include_disk_mounts = ["$PERIPHERY_INCLUDE_DISK_MOUNTS"]
+include_disk_mounts = ["{{PERIPHERY_INCLUDE_DISK_MOUNTS}}"]
 
 ## Optional. Don't include these mounts in the disk report.
 ## Example: exclude_disk_mounts = ["/mnt/exclude/1", "/mnt/exclude/2"]
@@ -128,12 +128,12 @@ ssl_enabled = true
 
 ## Path to the ssl key.
 ## Env: PERIPHERY_SSL_KEY_FILE
-## Default: $root_directory/ssl/key.pem
+## Default: {{root_directory}}/ssl/key.pem
 # ssl_key_file = "/etc/komodo/ssl/key.pem"
 
 ## Path to the ssl cert.
 ## Env: PERIPHERY_SSL_CERT_FILE
-## Default: $root_directory/ssl/cert.pem
+## Default: {{root_directory}}/ssl/cert.pem
 # ssl_cert_file = "/etc/komodo/ssl/cert.pem"
 
 ###########
@@ -144,13 +144,13 @@ ssl_enabled = true
 ## Options: off, error, warn, info, debug, trace
 ## Default: info
 ## Env: PERIPHERY_LOGGING_LEVEL
-logging.level = "$KOMODO_LOGGING_LEVEL"
+logging.level = "{{KOMODO_LOGGING_LEVEL}}"
 
 ## Specify the logging format for stdout / stderr.
 ## Env: PERIPHERY_LOGGING_STDIO
 ## Options: standard, json, none
 ## Default: standard
-logging.stdio = "$KOMODO_LOGGING_STDIO"
+logging.stdio = "{{KOMODO_LOGGING_STDIO}}"
 
 ## Specify a opentelemetry otlp endpoint to send traces to.
 ## Example: http://localhost:4317.
@@ -167,13 +167,13 @@ logging.opentelemetry_service_name = "Periphery"
 ## Note. Single logs will span multiple lines.
 ## Env: PERIPHERY_LOGGING_PRETTY
 ## Default: false
-logging.pretty = $KOMODO_LOGGING_PRETTY
+logging.pretty = {{KOMODO_LOGGING_PRETTY}}
 
 ## Specify whether startup config log
 ## is more human readable (multi-line)
 ## Env: PERIPHERY_PRETTY_STARTUP_CONFIG
 ## Default: false
-pretty_startup_config = $KOMODO_LOGGING_STARTUP_CONFIG
+pretty_startup_config = {{KOMODO_LOGGING_STARTUP_CONFIG}}
 
 #################
 # GIT PROVIDERS #
