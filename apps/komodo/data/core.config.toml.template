@@ -53,12 +53,12 @@ passkey = "{{APP_KOMODO_PASSKEY}}"
 ## upon first startup. Example: `https://periphery:8120`
 ## Env: KOMODO_FIRST_SERVER
 ## Optional, no default.
-first_server = "{{KOMODO_FIRST_SERVER}}"
+first_server = "https://periphery:8120"
 
 ## Give the first server a custom name.
 ## Env: KOMODO_FIRST_SERVER_NAME
 ## Default: Local
-first_server_name = "{{KOMODO_FIRST_SERVER_NAME}}"
+first_server_name = "Local"
 
 ## Disables write support on resources in the UI.
 ## This protects users that that would normally have write priviledges during their UI usage,
@@ -71,7 +71,7 @@ ui_write_disabled = false
 ## Useful when only having http connection to core, as UI quick-copy button won't work.
 ## Env: KOMODO_DISABLE_CONFIRM_DIALOG
 ## Default: false
-disable_confirm_dialog = {{KOMODO_DISABLE_CONFIRM_DIALOG}}
+disable_confirm_dialog = false
 
 ## Disables UI websocket automatic reconnection.
 ## Users will still be able to trigger reconnect by clicking the connection indicator.
@@ -125,7 +125,7 @@ internet_interface = ""
 ##
 ## Env: KOMODO_LOCAL_AUTH
 ## Default: false
-local_auth = {{KOMODO_LOCAL_AUTH}}
+local_auth = true
 
 ## Initialize the first admin user when starting up Komodo for the first time.
 ## Env: KOMODO_INIT_ADMIN_USERNAME or KOMODO_INIT_ADMIN_USERNAME_FILE
@@ -183,7 +183,7 @@ jwt_secret = "{{APP_KOMODO_JWT_SECRET}}"
 ## Env: KOMODO_JWT_TTL
 ## Options: https://docs.rs/komodo_client/latest/komodo_client/entities/enum.Timelength.html
 ## Default: 1-day.
-jwt_ttl = "{{KOMODO_JWT_TTL}}"
+jwt_ttl = "1-day"
 
 #############
 # OIDC Auth #
@@ -284,13 +284,13 @@ github_oauth.secret = ""
 ## Env: KOMODO_MONITORING_INTERVAL
 ## Options: https://docs.rs/komodo_client/latest/komodo_client/entities/enum.Timelength.html
 ## Default: 15-sec
-monitoring_interval = "{{KOMODO_MONITORING_INTERVAL}}"
+monitoring_interval = "15-sec"
 
 ## Interval at which to poll Resources for any updates / automated actions.
 ## Env: KOMODO_RESOURCE_POLL_INTERVAL
 ## Options: https://docs.rs/komodo_client/latest/komodo_client/entities/enum.Timelength.html
 ## Default: 1-hr
-resource_poll_interval = "{{KOMODO_RESOURCE_POLL_INTERVAL}}"
+resource_poll_interval = "1-hr"
 
 ############
 # Security #
@@ -393,13 +393,13 @@ webhook_base_url = ""
 ## Env: KOMODO_LOGGING_LEVEL
 ## Options: off, error, warn, info, debug, trace
 ## Default: info
-logging.level = "{{KOMODO_LOGGING_LEVEL}}"
+logging.level = "info"
 
 ## Specify the logging format.
 ## Env: KOMODO_LOGGING_STDIO
 ## Options: standard, json, none
 ## Default: standard
-logging.stdio = "{{KOMODO_LOGGING_STDIO}}"
+logging.stdio = "standard"
 
 ## Optionally specify a opentelemetry otlp endpoint to send traces to.
 ## Example: http://localhost:4317
@@ -416,13 +416,13 @@ logging.opentelemetry_service_name = "Komodo"
 ## Note. Single logs will span multiple lines.
 ## Env: KOMODO_LOGGING_PRETTY
 ## Default: false
-logging.pretty = {{KOMODO_LOGGING_PRETTY}}
+logging.pretty = true
 
 ## Specify whether startup config log
 ## is more human readable (multi-line)
 ## Env: KOMODO_PRETTY_STARTUP_CONFIG
 ## Default: false
-pretty_startup_config = {{KOMODO_PRETTY_STARTUP_CONFIG}}
+pretty_startup_config = true
 
 ###########
 # PRUNING #
